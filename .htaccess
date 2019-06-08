@@ -1,0 +1,18 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php
+
+SetEnv TZ Europe/Kiev
+ErrorDocument 400 /400.html
+ErrorDocument 401 /401.html
+
+<FilesMatch ".(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+# disable directory browsing
+Options All -Indexes
